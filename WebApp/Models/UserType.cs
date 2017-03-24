@@ -8,11 +8,11 @@ namespace WebApp.Models
     public class UserType
     {
         public int UserTypeId { get; set; }
-        public string Role { get; set; }
+        public string RoleName { get; set; }
 
         public override string ToString()
         {
-            return Role;
+            return RoleName;
         }
     }
 }
