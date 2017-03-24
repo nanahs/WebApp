@@ -1,13 +1,31 @@
-﻿@model IEnumerable<WebApp.Models.User>
+﻿@model List<WebApp.Models.RsoMember>
 
-@{ 
+@{
     ViewData["Title"] = "List All Users";
 }
 
 <h2>Index</h2>
 
 
-<table class="table">
+<table>
+    <thead>
+        <tr>
+            <th>Rso Id</th>
+            <th>Member List</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var a in Model){
+            <tr>
+                <td>@a.RsoId</td>
+                <td>@a.UserId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -49,4 +67,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@

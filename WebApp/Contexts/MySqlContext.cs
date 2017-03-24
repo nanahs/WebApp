@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Models;
+using SapientGuardian.MySql.Data.EntityFrameworkCore;
 
 namespace WebApp.Contexts
 {
@@ -14,12 +15,26 @@ namespace WebApp.Contexts
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<RsoMember> RsoMember { get; set; }
+        public DbSet<Rso> Rso { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<UserType>().ToTable("UserTypes").HasKey(x => x.UserTypeId);
+
             builder.Entity<User>().ToTable("Users").HasKey(x => x.UserId);
-            builder.Entity<UserType>().ToTable("UserType").HasKey(x => x.UserTypeId);
+
+            builder.Entity<Rso>().ToTable("Rsos").HasKey(x => x.RsoId);
+
+            var mems = builder.Entity<RsoMember>();
+            mems.ToTable("RsoMembership").HasKey(x => x.RsoMemberId);
+
+            //builder.Entity<RsoMember>()
+            //.HasRequired(e => e.User)
+            //.WithMany(e => e.Model1s)
+            //.HasForeignKey(e => new { e.fk_one, e.fk_two })
+            //.WillCascadeOnDelete(false);
         }
         
     }

@@ -11,22 +11,22 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
-    public class UserController : Controller
+    public class ModelTestController : Controller
     {
 
         private readonly MySqlContext cont;
 
-        public UserController(MySqlContext context)
+        public ModelTestController(MySqlContext context)
         {
             cont = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
 
-            List<User> users = cont.Users.ToList();
-
-            return View(await cont.Users.ToListAsync());
+            var users = cont.Users.ToList();
+            var mems = cont.RsoMember.ToList();
+            return View(mems);
         }
 
     }

@@ -6,14 +6,16 @@ using WebApp.Models;
 
 namespace WebApp.ViewModels
 {
-    public class UserDisplayViewModel
+    public class ModelTestViewModel
     {
 
         public IEnumerable<User> Users { get; set; }
+        public IEnumerable<RsoMember> Members { get; set; }
 
-        public UserDisplayViewModel(IEnumerable<User> users)
+        public ModelTestViewModel(IEnumerable<User> users, IEnumerable<RsoMember> mems)
         {
             Users = users;
+            Members = mems;
         }
 
     }

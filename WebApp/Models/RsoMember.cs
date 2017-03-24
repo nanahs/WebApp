@@ -7,6 +7,7 @@ namespace WebApp.Models
 {
     public class RsoMember
     {
+        public int RsoMemberId { get; set; }
         public int RsoId { get; set; }
         public int UserId { get; set; }
     }
