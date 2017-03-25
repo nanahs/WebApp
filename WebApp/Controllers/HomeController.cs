@@ -13,9 +13,9 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult FindEvents()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Find Events Page";
 
             return View();
         }
@@ -24,6 +24,11 @@ namespace WebApp.Controllers
         {
             ViewData["Message"] = "Your contact page.";
 
+            return View();
+        }
+
+        public IActionResult LogIn()
+        {
             return View();
         }
 

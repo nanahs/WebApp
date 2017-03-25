@@ -14,5 +14,12 @@ namespace WebApp.Models
         public string Password { get; set; }
         public int UniversityId { get; set; }
         public int UserTypeId { get; set; }
+
+        public User()
+        {
+            this.rsoMem = new HashSet<RsoMembership>();
+        }
+
+        public virtual IEnumerable<RsoMembership> rsoMem { get; set; }
     }
 }

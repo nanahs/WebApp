@@ -15,8 +15,8 @@ namespace WebApp.Contexts
 
         public DbSet<User> Users { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-        public DbSet<RsoMember> RsoMember { get; set; }
         public DbSet<Rso> Rso { get; set; }
+        public DbSet<RsoMembership> RsoMembers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -27,8 +27,8 @@ namespace WebApp.Contexts
 
             builder.Entity<Rso>().ToTable("Rsos").HasKey(x => x.RsoId);
 
-            var mems = builder.Entity<RsoMember>();
-            mems.ToTable("RsoMembership").HasKey(x => x.RsoMemberId);
+            var mems = builder.Entity<RsoMembership>().HasOne(x => x.rso).WithMany(s => s.rsoMem);
+
 
             //builder.Entity<RsoMember>()
             //.HasRequired(e => e.User)

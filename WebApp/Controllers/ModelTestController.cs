@@ -25,7 +25,9 @@ namespace WebApp.Controllers
         {
 
             var users = cont.Users.ToList();
-            var mems = cont.RsoMember.ToList();
+            var mems = cont.RsoMembers.ToList();
+            
+
             return View(mems);
         }
 

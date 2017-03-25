@@ -1,4 +1,4 @@
-﻿@model List<WebApp.Models.RsoMember>
+﻿@model List<WebApp.Models.RsoMembership>
 
 @{
     ViewData["Title"] = "List All Users";
@@ -11,14 +11,16 @@
     <thead>
         <tr>
             <th>Rso Id</th>
-            <th>Member List</th>
+            <th>Member</th>
         </tr>
     </thead>
     <tbody>
         @foreach(var a in Model){
             <tr>
                 <td>@a.RsoId</td>
-                <td>@a.UserId</td>
+                @foreach (var z in a.rso.rsoMem) {
+                    <td>z.user.FirstName</td>
+                }
             </tr>
         }
     </tbody>

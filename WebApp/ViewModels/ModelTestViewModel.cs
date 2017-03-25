@@ -10,9 +10,9 @@ namespace WebApp.ViewModels
     {
 
         public IEnumerable<User> Users { get; set; }
-        public IEnumerable<RsoMember> Members { get; set; }
+        public IEnumerable<RsoMembership> Members { get; set; }
 
-        public ModelTestViewModel(IEnumerable<User> users, IEnumerable<RsoMember> mems)
+        public ModelTestViewModel(IEnumerable<User> users, IEnumerable<RsoMembership> mems)
         {
             Users = users;
             Members = mems;

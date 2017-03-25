@@ -10,5 +10,12 @@ namespace WebApp.Models
         public int RsoId { get; set; }
         public string RsoName { get; set; }
         public int AdminId { get; set; }
+
+        public Rso()
+        {
+            this.rsoMem = new HashSet<RsoMembership>();
+        }
+
+        public virtual IEnumerable<RsoMembership> rsoMem { get; set; }
     }
 }
