@@ -9,11 +9,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebApp.Contexts;
 using MySQL.Data.Entity.Extensions;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace WebApp
 {
     public class Startup
     {
+
+        public IConfigurationRoot conf { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -35,6 +39,8 @@ namespace WebApp
             services.AddDbContext<MySqlContext>(options =>  options.UseMySQL(conn));
 
             services.AddMvc();
+
+            services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +67,7 @@ namespace WebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            
         }
     }
 }

@@ -1,4 +1,9 @@
 ﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+@*@model WebApp.Models.User*@
+@{ 
+
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,8 +40,16 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="FindEvents">Find Events</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @*@if (Model.UserTypeId == 1)
+                    {
+                        <li><a asp-area="" asp-controller="Create" asp-action="University">Create Uni Profile</a></li>
+                    }
+                    @if (Model.UserTypeId == 2)
+                    {
+                        <li><a asp-area="" asp-controller="Create" asp-action="Event">Create Event</a></li>
+                    }*@
                 </ul>
-                <ul class="nav navbar-nav pull-right"><li><a asp-area="" asp-controller="Home" asp-action="LogIn">Log In</a></li></ul>
+                <ul class="nav navbar-nav pull-right"><li><a asp-area="" asp-controller="Login">Log In</a></li></ul>
             </div>
         </div>
     </nav>

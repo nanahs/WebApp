@@ -12,4 +12,15 @@ namespace WebApp.Models
         public int NumberOfStudents { get; set; }
         public int DescriptionId { get; set; }
     }
+
+    public class WebUniversity
+    {
+        public string name { get; set; }
+        public string abbrev { get; set; }
+        public string loc { get; set; }
+        public decimal lati { get; set; }
+        public decimal longi { get; set; }
+        public int numStud { get; set; }
+        public string desc { get; set; }
+    }
 }
