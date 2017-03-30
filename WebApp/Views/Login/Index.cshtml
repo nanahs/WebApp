@@ -1,5 +1,4 @@
-﻿@{
-}
+﻿@model bool
 
 <br />
 <div class="container">
@@ -7,7 +6,13 @@
         <div class="panel" style="border: 1px solid lightgray;">
             <div class="panel-body">
                 <h2>Log In</h2>
-                <form class="form-horizontal row" asp-controller="Login" asp-action="Login" method="post">
+                @if (Model)
+                {
+                    <div class="alert alert-danger">
+                        <strong>Login Failed!</strong>
+                    </div>
+                }
+                <form class="form-horizontal row" asp-controller="Login" asp-action="CheckCreds" method="post">
                     <div class="form-group">
                         <label class="control-label col-md-3">Email:</label>
                         <input type="email" name="email" class="form-control col-md-6" />

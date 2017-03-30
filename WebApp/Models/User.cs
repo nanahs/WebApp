@@ -21,5 +21,11 @@ namespace WebApp.Models
         }
 
         public virtual IEnumerable<RsoMembership> rsoMem { get; set; }
+
+        public override string ToString()
+        {
+            char splitChar = '~';
+            return UserId + splitChar + FirstName + splitChar + LastName + splitChar + Email + splitChar + Password + splitChar + UniversityId + splitChar + UserTypeId;
+        }
     }
 }

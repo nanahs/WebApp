@@ -16,8 +16,6 @@ namespace WebApp
     public class Startup
     {
 
-        public IConfigurationRoot conf { get; }
-
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()

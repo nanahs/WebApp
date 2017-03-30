@@ -1,19 +1,50 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Contexts;
+using WebApp.Repositories;
 
 namespace WebApp.Models
 {
     public class Login
     {
-        public string email { get; set; }
-        public string password { get; set; }
-
-        public bool verifyLogin()
+        public string Email { get; set; }
+        public string Password { get; set; }
+        
+        public User VerifyLogin(IConfigurationRoot conf, MySqlContext cont)
         {
             //make db connection and check if user and password match
-            return true;
+
+            var sProc = "validateUser";
+
+            var s = conf.GetConnectionString("MySqlDatabase");
+
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("e", Email);
+            parameters.Add("p", Password);
+            parameters.Add("u", 0, direction: System.Data.ParameterDirection.Output);
+
+            using (var con = new MySqlConnection(s))
+            {
+                con.Execute(sProc, parameters, commandTimeout: 120, commandType: System.Data.CommandType.StoredProcedure);
+
+                int? userId = parameters.Get<int?>("u");
+
+                UserRepository repo = new UserRepository(cont);
+                var user = repo.GetUserById(userId.Value);
+
+                return userId.HasValue ? user : null;
+            }
+            
+        }
+
+        public override string ToString()
+        {
+            return Email + ";" + Password;
         }
     }
     

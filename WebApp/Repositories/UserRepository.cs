@@ -22,5 +22,10 @@ namespace WebApp.Repositories
             return Conn.Users.Distinct();
         }
 
+        public User GetUserById(int userId)
+        {
+            return Conn.Users.Single(x => x.UserId == userId);
+        }
+
     }
 }

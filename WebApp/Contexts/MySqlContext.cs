@@ -18,12 +18,13 @@ namespace WebApp.Contexts
         public DbSet<Rso> Rso { get; set; }
         public DbSet<RsoMembership> RsoMembers { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Category>().ToTable("Categories").HasKey(x => x.CategoryId);
             builder.Entity<Event>().ToTable("Events").HasKey(x => x.EventId);
-
             builder.Entity<UserType>().ToTable("UserTypes").HasKey(x => x.UserTypeId);
 
             builder.Entity<User>().ToTable("Users").HasKey(x => x.UserId);
