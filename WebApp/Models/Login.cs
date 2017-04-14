@@ -21,7 +21,11 @@ namespace WebApp.Models
 
             var sProc = "validateUser";
 
-            var s = conf.GetConnectionString("MySqlDatabase");
+            /*
+             * "MySqlDatabase": "Server=31.220.105.201;Port=3306;Database=nanahsco_CollegeWeb;Uid=nanahsco_admin;Pwd=DatabaseSystems!;"
+             */
+            //var s = conf.GetConnectionString("MySqlDatabase");
+            string s = conf.GetConnectionString("MySqlDatabase");
 
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("e", Email);
@@ -35,6 +39,9 @@ namespace WebApp.Models
                 int? userId = parameters.Get<int?>("u");
 
                 UserRepository repo = new UserRepository(cont);
+
+                if (userId is null)
+                    return null;
                 var user = repo.GetUserById(userId.Value);
 
                 return userId.HasValue ? user : null;

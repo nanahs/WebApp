@@ -29,6 +29,10 @@ namespace WebApp.Controllers
             return View();
         }
 
+        public IActionResult Rso()
+        {
+            return View();
+        }
         
         public IActionResult University()
         {
